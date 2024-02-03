@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "homeclient" do |my_machine|
+    config.vm.box = "ubuntu/focal64"
+    config.vm.hostname = "homeclient"
+    config.vm.network "private_network", virtualbox_intnet: "VirtualBox Host-Only Ethernet Adapter #2", type: "static", ip: "192.168.100.167"
+    config.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+      vb.name = "ca_c_homeclient"
+      vb.memory = "512"
+      vb.cpus = "1"
+      vb.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
+    end
+  end
+end

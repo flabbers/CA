@@ -1,0 +1,18 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "remoteclient" do |my_machine|
+    config.vm.box = "ubuntu/focal64"
+    #config.vm.box = "bento/ubuntu-20.04"
+    config.vm.hostname = "remoteclient"
+    config.vm.network "private_network", virtualbox__intnet: "remote", type: "static", ip: "172.123.0.66"
+    config.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+      vb.name = "ca_c_remoteclient"
+      vb.memory = "512"
+      vb.cpus = "1"
+      vb.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
+    end
+  end
+end

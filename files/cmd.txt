@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Command Injection</title>
+    <script src="assets/javascript/index.js"></script>
+</head>
+<body>
+<h1>Command Injection</h1>
+<form id="ping">
+    <h2>Ping a device</h2>
+    <label for="ip">Enter an IP address</label>
+    <input id="ip" type="text"/>
+    <input type="submit" value="PING">
+</form>
+
+<form id="exec">
+    <h2>Execute a command</h2>
+    <label for="cmd">Enter a command</label>
+    <input id="cmd" type="text"/>
+    <input type="submit" value="EXEC">
+</form>
+
+<pre></pre>
+</body>
+</html>

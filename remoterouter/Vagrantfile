@@ -1,0 +1,18 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "remoterouter" do |my_machine|
+    config.vm.box = "generic-x64/debian12"
+    config.vm.hostname = "remoterouter"
+    config.vm.network "private_network", virtualbox_intnet: "VirtualBox Host-Only Ethernet Adapter #2", type: "static", ip: "192.168.100.252"
+    config.vm.network "private_network", virtualbox__intnet: "remote", type: "static", ip: "172.123.0.254"
+    config.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+      vb.name = "ca_d_remoterouter"
+      vb.memory = "1024"
+      vb.cpus = "1"
+      vb.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
+    end
+  end
+end

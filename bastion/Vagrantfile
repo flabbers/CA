@@ -1,0 +1,18 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "bastion" do |my_machine|
+    config.vm.box = "almalinux/9"
+    config.vm.box_version = "9.2.20230513"
+    config.vm.hostname = "bastion"
+    config.vm.network "private_network", virtualbox__intnet: "dmz", type: "static", ip: "172.30.20.20"
+    config.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+      vb.name = "ca_c_bastion"
+      vb.memory = "512"
+      vb.cpus = "1"
+      vb.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
+    end
+  end
+end
